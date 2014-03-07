@@ -1,3 +1,4 @@
+[![Gem Version](https://badge.fury.io/rb/unicode-script.png)](http://badge.fury.io/rb/unicode-script)
 unicode-script
 ==============
 
