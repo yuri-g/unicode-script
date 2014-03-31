@@ -6,10 +6,10 @@ describe 'UnicodeScript' do
     h = 'ひらがな'
     k = 'カタカナ'
     mixed = "東京 Tokyo"
-    UnicodeScript.detect(h).should eq([{:script => 'Hiragana', :value => 'ひらがな'}])
-    UnicodeScript.detect(k).should eq([{:script => 'Katakana', :value => 'カタカナ'}])
-    UnicodeScript.detect(mixed).should eq([{:script => 'CJK Unified Ideographs', :value => '東京'},
-                                           {:script => 'Basic Latin', :value => 'Tokyo'}])
+    UnicodeScript.detect(h).should eq([{:script => 'hiragana', :value => 'ひらがな'}])
+    UnicodeScript.detect(k).should eq([{:script => 'katakana', :value => 'カタカナ'}])
+    UnicodeScript.detect(mixed).should eq([{:script => 'cjk unified ideographs', :value => '東京'},
+                                           {:script => 'basic latin', :value => 'Tokyo'}])
   end
 
   it 'should be able to check whether string belongs to certain script' do
