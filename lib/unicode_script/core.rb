@@ -34,6 +34,10 @@ module UnicodeScript
     end
   end
 
+  def self.respond_to_missing?(method, include_private = false)
+    charted?(method.to_s.gsub('_', ' ').chop) || super
+  end
+
   private
 
   def self.charted? script
