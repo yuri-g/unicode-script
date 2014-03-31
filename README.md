@@ -5,6 +5,10 @@ unicode-script
 Small utility that allows you to detect scripts (languages) in unicode text.
 
 ###Usage: 
+```
+gem install unicode-script
+```
+
 Suppose you have a string 
 
 ```ruby
