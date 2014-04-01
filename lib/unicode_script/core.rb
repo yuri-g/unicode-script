@@ -1,19 +1,17 @@
 module UnicodeScript
-
   def self.detect(string)
     res = []
-    string.tr!(' ','')
+    string.tr!(' ', '')
     string.codepoints.each do |c|
       script = find_script(c)
-      index = res.find_index{|v| v[:script] == script}
+      index = res.find_index { |v| v[:script] == script }
       if script
         if index
           res[index][:value].push(c.chr)
         else
-          res.push({script: script, value: [].push(c.chr)})
+          res.push(script: script, value: [].push(c.chr))
         end
       end
-
     end
     res.each do |r|
       r[:value] = r[:value].join('')
@@ -23,10 +21,9 @@ module UnicodeScript
 
   def self.method_missing(method, val)
     script_name = method.to_s.gsub('_', ' ').chop
-    puts script_name
     if charted? script_name
       val.codepoints.each do |point|
-        return false if !(CHARTS[script_name].include?(point))
+        return false unless CHARTS[script_name].include?(point)
       end
       return true
     else
@@ -40,8 +37,8 @@ module UnicodeScript
 
   private
 
-  def self.charted? script
-    CHARTS.has_key?(script)
+  def self.charted?(script)
+    CHARTS.key?(script)
   end
 
   def self.find_script(codepoint)
@@ -50,5 +47,4 @@ module UnicodeScript
     end
     nil
   end
-
 end
